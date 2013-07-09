@@ -13,8 +13,8 @@ REQUEST_DISCONNECT = 2
 
 MAX = Math.pow(2, 52) # 4 PiB. Javascript max int is 2^53, but this makes our life easier below.
 
-# argv[2] is the path to the disk image
-fd = fs.openSync(process.argv[2], 'r')
+# argv[3] is the path to the disk image
+fd = fs.openSync(process.argv[3], 'r')
 diskImageStats = fs.fstatSync(fd)
 if (diskImageStats.size > MAX)
    console.log('The disk image is too big. Exiting.')
@@ -84,7 +84,8 @@ handleDataHelper = (connection, data) ->
          console.log('handle close')
          connection.end()
 
-server.listen(8124)
+# argv[2] is the port to listen on
+server.listen(process.argv[2])
 
 server.on('close', ->
    console.log('closing file descriptor')
