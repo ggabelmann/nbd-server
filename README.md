@@ -17,7 +17,7 @@ It depends on your environment.
 I googled around quite a bit to set up my environment (but there is nothing special about it).
 I am using Lubuntu 13.04 and use a combination of npm, node, and coffeescript to run the server.
 
-coffee nbdserver.coffee /path/to/image
+coffee nbdserver.coffee 8124 /path/to/image
 
 Caveats
 =======
