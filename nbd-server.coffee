@@ -32,7 +32,7 @@ class FsDiskImage
    getSize: () ->
       return whenjs.promise((resolve, reject, notify) => # fat arrow!
          fs.fstat(@fd, (error, stats) ->
-            resolve(stats.size)
+            resolve(new Number(stats.size))
          )
       )
 
@@ -56,7 +56,7 @@ class HttpDiskImage
       whenjs.promise((resolve, reject, notify) => # fat arrow!
          request.head(@uri, (error, response) ->
             # Need to check the statusCode here!
-            resolve(response.headers['content-length'])
+            resolve(new Number(response.headers['content-length']))
          )
       )
 
@@ -188,7 +188,7 @@ handleDataHelper = (connection, data) ->
          connection.end()
 
 integerToPaddedHex = (integer, length) ->
-   hex = (new Number(integer)).toString(16) # Force it to be a number and then convert its base
+   hex = integer.toString(16)
    while (hex.length < length)
       hex = '0' + hex
    return hex
