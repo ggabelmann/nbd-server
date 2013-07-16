@@ -20,6 +20,7 @@ I am using Lubuntu 13.04 and a combination of npm, node, and coffeescript to run
 It supports reading from disk images from the filesystem or an http server. I will add more protocols in the future.
 
 coffee nbdserver.coffee 8124 fs   /home/jdoe/disk-image
+
 coffee nbdserver.coffee 8124 http http://example.com:80/disk-image
 
 Caveats
